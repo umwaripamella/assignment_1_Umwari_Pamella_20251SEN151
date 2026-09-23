@@ -46,7 +46,7 @@ JOIN customers c ON o.customer_id = c.customer_id
 ORDER BY o.order_date;
 ```
 
-![Q1 result](screenshots/q1_inner_join.png)
+![Q1 result](screenshoots/q1_inner_join.png)
 
 15 rows back — one per order, which is exactly what I'd expect since every
 order in my data has a valid customer.
@@ -66,7 +66,7 @@ JOIN products p ON oi.product_id = p.product_id
 ORDER BY oi.order_id, oi.order_item_id;
 ```
 
-![Q2 result](screenshots/q2_join.png)
+![Q2 result](screenshoots/q2_join.png)
 
 25 rows, matching the 25 order items I inserted.
 
@@ -87,7 +87,7 @@ LEFT JOIN orders o ON c.customer_id = o.customer_id
 ORDER BY c.customer_id;
 ```
 
-![Q3 result](screenshots/q3_left_join.png)
+![Q3 result](screenshoots/q3_left_join.png)
 
 16 rows — and right at the bottom, Fabrice Rugamba shows up with `NULL` for
 order_id and order_date. That's the point of the LEFT JOIN: he's a
@@ -121,7 +121,7 @@ WHERE total_spent > (SELECT AVG(total_spent) FROM customer_totals)
 ORDER BY total_spent DESC;
 ```
 
-![Q4 result](screenshots/q4_cte_above_average.png)
+![Q4 result](screenshoots/q4_cte_above_average.png)
 
 3 customers clear the average: Uwitonze Peace (116.70), Ntwari Kenny
 (81.80), and David Habimana (64.10).
@@ -151,7 +151,7 @@ FROM customer_totals
 ORDER BY spend_rank;
 ```
 
-![Q5 result](screenshots/q5_rank.png)
+![Q5 result](screenshoots/q5_rank.png)
 
 Uwitonze Peace is #1, then Ntwari Kenny, David Habimana, Amini Niyonzima,
 and Esther Ingabire last at 6.00 — she's only placed one order.
@@ -172,7 +172,7 @@ FROM orders
 ORDER BY customer_id, order_sequence;
 ```
 
-![Q6 result](screenshots/q6_row_number.png)
+![Q6 result](screenshoots/q6_row_number.png)
 
 Uwitonze Peace's 5 orders are numbered 1 through 5 in date order; every
 other customer starts back at 1 for their own first order.
@@ -202,7 +202,7 @@ FROM order_revenue
 ORDER BY order_date, order_id;
 ```
 
-![Q7 result](screenshots/q7_running_total.png)
+![Q7 result](screenshoots/q7_running_total.png)
 
 Revenue climbs from 31.60 on the first order to 306.90 by the last one —
 steadily, with no single order causing a huge jump.
@@ -231,7 +231,7 @@ WHERE previous_order_date IS NOT NULL
 ORDER BY customer_id, order_date;
 ```
 
-![Q8 result](screenshots/q8_lag_days_between_orders.png)
+![Q8 result](screenshoots/q8_lag_days_between_orders.png)
 
 10 rows — every customer with more than one order. Gaps range from 15 days
 (Uwitonze Peace's first repeat purchase) up to 48 days (Amini Niyonzima
